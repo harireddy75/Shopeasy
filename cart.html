@@ -1,0 +1,68 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🛒 My Cart</h1>
+
+    <ul id="cart-items"></ul>
+
+    <h2>Total: ₹<span id="total-price">0</span></h2>
+
+    <button onclick="window.location.href='index.html'">
+        Continue Shopping
+    </button>
+
+    <button onclick="clearCart()">
+        Clear Cart
+    </button>
+
+    <button onclick="window.location.href='checkout.html'">
+        Proceed to Checkout
+    </button>
+
+    <script>
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+        let totalPrice = localStorage.getItem("totalPrice") || 0;
+
+        let cartItems = document.getElementById("cart-items");
+
+        for(let product in cart){
+
+            let li = document.createElement("li");
+
+            li.innerHTML =
+                product +
+                " | Qty: " +
+                cart[product].quantity +
+                " | ₹" +
+                (cart[product].price * cart[product].quantity);
+
+            cartItems.appendChild(li);
+        }
+
+        document.getElementById("total-price").innerText = totalPrice;
+
+        function clearCart(){
+
+            localStorage.removeItem("cart");
+            localStorage.removeItem("totalPrice");
+
+            location.reload();
+        }
+
+    </script>
+
+</body>
+</html>
+```

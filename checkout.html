@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f5f5f5;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            width:400px;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        input, textarea, select{
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+            margin-bottom:15px;
+            box-sizing:border-box;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:green;
+            color:white;
+            border:none;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>🛒 Checkout</h2>
+
+        <input id="name" type="text" placeholder="Full Name">
+
+        <input id="email" type="email" placeholder="Email Address">
+
+        <input id="phone" type="tel" placeholder="Phone Number">
+
+        <textarea id="address" placeholder="Address"></textarea>
+
+        <select id="payment">
+            <option value="">Select Payment Method</option>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+        </select>
+
+        <button onclick="placeOrder()">Place Order</button>
+
+    </div>
+
+    <script>
+
+        function placeOrder(){
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let address = document.getElementById("address").value.trim();
+            let payment = document.getElementById("payment").value;
+
+            if(name === "" || email === "" || phone === "" || address === "" || payment === ""){
+                alert("Please fill all details.");
+                return;
+            }
+
+            if(!email.includes("@")){
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            if(phone.length !== 10 || isNaN(phone)){
+                alert("Phone number must be exactly 10 digits.");
+                return;
+            }
+
+            localStorage.removeItem("cart");
+            localStorage.removeItem("totalPrice");
+
+            window.location.href = "success.html";
+        }
+
+    </script>
+
+</body>
+</html>

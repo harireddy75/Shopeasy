@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin-top:150px;
+            background:#f5f5f5;
+        }
+
+        .box{
+            background:white;
+            width:500px;
+            margin:auto;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h1{
+            color:green;
+        }
+
+        button{
+            padding:12px 25px;
+            background:#131921;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>✅ Order Placed Successfully</h1>
+
+        <p>Thank you for shopping with ShopEasy.</p>
+
+        <p>Order ID: <span id="orderid"></span></p>
+
+        <p>Estimated Delivery: 3-5 Business Days 🚚</p>
+
+        <button onclick="window.location.href='index.html'">
+            Back To Home
+        </button>
+
+    </div>
+
+    <script>
+        let orderId = Math.floor(Math.random()*900000)+100000;
+        document.getElementById("orderid").innerText = orderId;
+    </script>
+
+</body>
+</html>
